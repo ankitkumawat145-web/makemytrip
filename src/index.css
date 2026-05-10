@@ -16,6 +16,8 @@
   --color-border-main: #e2e8f0;
 }
 
+@variant dark (&:where(.dark, .dark *));
+
 .dark {
   --color-bg-base: #0f172a;
   --color-bg-card: #1e293b;

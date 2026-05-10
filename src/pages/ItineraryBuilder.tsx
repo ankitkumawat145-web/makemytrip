@@ -72,21 +72,21 @@ export default function ItineraryBuilder() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-50 text-slate-900 font-sans">
+    <div className="flex flex-col lg:flex-row h-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans transition-colors">
       {/* Left Pane: Stop Management */}
-      <div className="w-1/2 p-10 overflow-y-auto scroll-smooth border-r border-slate-100 space-y-12 pb-40">
+      <div className="w-full lg:w-1/2 p-6 md:p-10 overflow-y-auto scroll-smooth border-r border-slate-100 dark:border-slate-800 space-y-8 md:space-y-12 pb-40">
         <header className="space-y-6">
           <button 
             onClick={() => navigate(`/trip/${trip.id}`)}
-            className="flex items-center gap-3 text-slate-400 hover:text-orange-500 transition-all group font-black uppercase tracking-[0.2em] text-[10px]"
+            className="flex items-center gap-3 text-slate-400 dark:text-slate-500 hover:text-orange-500 transition-all group font-black uppercase tracking-[0.2em] text-[10px]"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform stroke-[3]" />
             Back to Strategy
           </button>
           <div className="space-y-2">
-            <h1 className="text-5xl font-black tracking-tight italic serif text-slate-900 leading-tight">{trip.name}</h1>
-            <div className="text-slate-400 flex items-center gap-3 uppercase tracking-widest text-[10px] font-black">
-              <div className="w-8 h-8 bg-orange-50 rounded-xl flex items-center justify-center">
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight italic serif text-slate-900 dark:text-white leading-tight">{trip.name}</h1>
+            <div className="text-slate-400 dark:text-slate-500 flex items-center gap-3 uppercase tracking-widest text-[10px] font-black">
+              <div className="w-8 h-8 bg-orange-50 dark:bg-orange-900/20 rounded-xl flex items-center justify-center">
                 <CalendarIcon className="w-4 h-4 text-orange-500 stroke-[2.5]" />
               </div>
               {trip.startDate} — {trip.endDate}
@@ -95,22 +95,22 @@ export default function ItineraryBuilder() {
         </header>
 
         <section className="space-y-8">
-          <h2 className="text-2xl font-black italic serif flex items-center gap-4">
+          <h2 className="text-2xl font-black italic serif flex items-center gap-4 dark:text-white">
             <div className="w-10 h-1 bg-orange-500 rounded-full" />
             Route Architecture
           </h2>
 
           <div className="space-y-6 relative">
              {stops.length > 1 && (
-               <div className="absolute left-10 top-12 bottom-12 w-[4px] bg-slate-100 z-0 rounded-full" />
+               <div className="absolute left-10 top-12 bottom-12 w-[4px] bg-slate-100 dark:bg-slate-800 z-0 rounded-full" />
              )}
              
              {stops.length === 0 && (
-               <div className="bg-white border-2 border-dashed border-slate-100 rounded-[40px] p-20 text-center space-y-6 shadow-sm">
-                 <div className="w-20 h-20 bg-slate-50 rounded-[32px] flex items-center justify-center mx-auto transition-transform hover:scale-110">
-                  <MapIcon className="w-10 h-10 text-slate-200 stroke-[1]" />
+               <div className="bg-white dark:bg-slate-900 border-2 border-dashed border-slate-100 dark:border-slate-800 rounded-[32px] md:rounded-[40px] p-12 md:p-20 text-center space-y-6 shadow-sm">
+                 <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-50 dark:bg-slate-800 rounded-[28px] md:rounded-[32px] flex items-center justify-center mx-auto transition-transform hover:scale-110">
+                  <MapIcon className="w-8 h-8 md:w-10 md:h-10 text-slate-200 dark:text-slate-700 stroke-[1]" />
                  </div>
-                 <p className="text-slate-400 text-[10px] uppercase font-black tracking-[0.2em] max-w-xs mx-auto leading-relaxed">Select a focal destination from the catalog to begin benchmarking your route.</p>
+                 <p className="text-slate-400 dark:text-slate-500 text-[10px] uppercase font-black tracking-[0.2em] max-w-xs mx-auto leading-relaxed">Select a focal destination from the catalog to begin benchmarking your route.</p>
                </div>
              )}
 
@@ -121,36 +121,36 @@ export default function ItineraryBuilder() {
                    initial={{ opacity: 0, scale: 0.95 }}
                    animate={{ opacity: 1, scale: 1 }}
                    exit={{ opacity: 0, scale: 0.95 }}
-                   className="bg-white border border-slate-100 rounded-[40px] p-8 relative z-10 flex flex-col gap-8 shadow-2xl shadow-slate-200/50 hover:scale-[1.02] transition-all"
+                   className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[32px] md:rounded-[40px] p-6 md:p-8 relative z-10 flex flex-col gap-6 md:gap-8 shadow-2xl shadow-slate-200/50 dark:shadow-none hover:scale-[1.02] transition-all"
                  >
                    <div className="flex justify-between items-start">
-                     <div className="flex gap-6">
-                        <div className="w-16 h-16 bg-orange-500 text-white rounded-[24px] flex items-center justify-center font-black text-2xl shadow-xl shadow-orange-500/20 italic serif border-4 border-white">
+                     <div className="flex gap-4 md:gap-6">
+                        <div className="w-12 h-12 md:w-16 md:h-16 bg-orange-500 text-white rounded-xl md:rounded-[24px] flex items-center justify-center font-black text-xl md:text-2xl shadow-xl shadow-orange-500/20 italic serif border-4 border-white dark:border-slate-800">
                           {String(index + 1).padStart(2, '0')}
                         </div>
                         <div className="space-y-1">
-                          <h3 className="text-2xl font-black italic serif tracking-tight">{stop.city}</h3>
-                          <p className="text-[10px] uppercase font-black text-slate-300 tracking-[0.2em]">{stop.state}</p>
+                          <h3 className="text-xl md:text-2xl font-black italic serif tracking-tight dark:text-white">{stop.city}</h3>
+                          <p className="text-[10px] uppercase font-black text-slate-300 dark:text-slate-600 tracking-[0.2em]">{stop.state}</p>
                         </div>
                      </div>
                      <button 
                         onClick={() => handleRemoveStop(stop.id)}
-                        className="p-3 bg-red-50 text-red-400 hover:bg-red-500 hover:text-white rounded-2xl transition-all shadow-sm active:scale-90"
+                        className="p-3 bg-red-50 dark:bg-red-900/20 text-red-500 rounded-2xl transition-all shadow-sm active:scale-90"
                       >
                         <Trash2 className="w-5 h-5 stroke-[2.5]" />
                       </button>
                    </div>
 
                    <div className="space-y-6">
-                     <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-[0.3em] text-slate-300 border-b border-slate-50 pb-3">
+                     <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-[0.3em] text-slate-300 dark:text-slate-600 border-b border-slate-50 dark:border-slate-800 pb-3">
                        <span>Operational Activities</span>
                        <span className="text-orange-500">{stop.activities.length} Total</span>
                      </div>
                      
-                     <div className="flex flex-wrap gap-3">
+                     <div className="flex flex-wrap gap-2 md:gap-3">
                        {stop.activities.map(activity => (
-                         <div key={activity.id} className="bg-slate-50 border border-slate-100 px-4 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center gap-3 group hover:bg-white transition-all shadow-sm">
-                            <span className="text-slate-900">{activity.name}</span>
+                         <div key={activity.id} className="bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 px-3 py-2 rounded-xl md:rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest flex items-center gap-3 group hover:bg-white dark:hover:bg-slate-700 transition-all shadow-sm">
+                            <span className="text-slate-900 dark:text-slate-100">{activity.name}</span>
                             <span className="text-orange-500/80">{formatCurrency(activity.cost)}</span>
                          </div>
                        ))}
@@ -159,21 +159,21 @@ export default function ItineraryBuilder() {
                           setSelectedCity(INDIAN_CITIES.find(c => c.name === stop.city) || null);
                           setActiveTab('activities');
                         }}
-                        className="px-5 py-2.5 rounded-2xl text-[10px] font-black uppercase tracking-widest bg-orange-500 text-white hover:bg-orange-600 transition-all flex items-center gap-2 shadow-lg shadow-orange-500/20 active:scale-95"
+                        className="px-4 md:px-5 py-2 md:py-2.5 rounded-xl md:rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest bg-orange-500 text-white hover:bg-orange-600 transition-all flex items-center gap-2 shadow-lg shadow-orange-500/20 active:scale-95"
                        >
                          <Plus className="w-4 h-4 stroke-[3]" /> Add Event
                        </button>
                      </div>
                    </div>
 
-                   <div className="grid grid-cols-2 gap-8 pt-6 border-t border-slate-50">
+                   <div className="grid grid-cols-2 gap-6 md:gap-8 pt-6 border-t border-slate-50 dark:border-slate-800">
                       <div className="space-y-1">
-                        <p className="text-[9px] uppercase font-black text-slate-300 tracking-[0.2em]">Logistic Base</p>
-                        <p className="text-lg font-black text-slate-900 tracking-tighter">{formatCurrency(stop.stayCost + stop.transportCost)}</p>
+                        <p className="text-[9px] uppercase font-black text-slate-300 dark:text-slate-600 tracking-[0.2em]">Logistic Base</p>
+                        <p className="text-base md:text-lg font-black text-slate-900 dark:text-white tracking-tighter">{formatCurrency(stop.stayCost + stop.transportCost)}</p>
                       </div>
                       <div className="space-y-1">
-                        <p className="text-[9px] uppercase font-black text-slate-300 tracking-[0.2em]">Activity Budget</p>
-                        <p className="text-lg font-black text-orange-500 tracking-tighter">
+                        <p className="text-[9px] uppercase font-black text-slate-300 dark:text-slate-600 tracking-[0.2em]">Activity Budget</p>
+                        <p className="text-base md:text-lg font-black text-orange-500 tracking-tighter">
                           {formatCurrency(stop.activities.reduce((acc, a) => acc + a.cost, 0))}
                         </p>
                       </div>
@@ -184,31 +184,31 @@ export default function ItineraryBuilder() {
           </div>
         </section>
 
-        <footer className="fixed bottom-0 left-0 w-1/2 p-8 bg-white/80 backdrop-blur-3xl border-r border-slate-100 flex justify-between items-center z-50 shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.05)]">
+        <footer className="fixed bottom-0 left-0 w-full lg:w-1/2 p-6 md:p-8 bg-white/80 dark:bg-slate-900/80 backdrop-blur-3xl border-t lg:border-r border-slate-100 dark:border-slate-800 flex justify-between items-center z-50 shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.05)]">
            <div className="space-y-1">
-             <p className="text-[10px] uppercase font-black text-slate-300 tracking-[0.3em]">Aggregate Valuation</p>
-             <p className="text-4xl font-black italic serif text-slate-900 tracking-tighter">
+             <p className="text-[9px] md:text-[10px] uppercase font-black text-slate-300 dark:text-slate-600 tracking-[0.3em]">Aggregate Valuation</p>
+             <p className="text-2xl md:text-4xl font-black italic serif text-slate-900 dark:text-white tracking-tighter">
                {formatCurrency(stops.reduce((acc, s) => acc + s.stayCost + s.transportCost + s.activities.reduce((a, act) => a + act.cost, 0), 0))}
              </p>
            </div>
            <button 
             onClick={() => navigate(`/trip/${trip.id}`)}
-            className="bg-orange-500 text-white px-12 py-5 rounded-[28px] font-black text-lg shadow-2xl shadow-orange-500/40 hover:bg-orange-600 transition-all hover:scale-105 active:scale-95 flex items-center gap-3 border-0"
+            className="bg-orange-500 text-white px-6 md:px-12 py-3 md:py-5 rounded-2xl md:rounded-[28px] font-black text-sm md:text-lg shadow-2xl shadow-orange-500/40 hover:bg-orange-600 transition-all hover:scale-105 active:scale-95 flex items-center gap-3 border-0"
            >
-             Lock Itinerary <ChevronRight className="w-6 h-6 stroke-[3]" />
+             Lock <span className="hidden sm:inline">Itinerary</span> <ChevronRight className="w-5 h-5 md:w-6 md:h-6 stroke-[3]" />
            </button>
         </footer>
       </div>
 
       {/* Right Pane: Catalog / Explorer */}
-      <div className="w-1/2 bg-white h-full flex flex-col shadow-2xl shadow-slate-200">
-        <div className="p-10 border-b border-slate-50 space-y-8 bg-slate-50/20">
-          <div className="flex bg-white p-2 rounded-[28px] gap-2 border border-slate-100 shadow-sm">
+      <div className="w-full lg:w-1/2 bg-white dark:bg-slate-900 h-full flex flex-col shadow-2xl shadow-slate-200 dark:shadow-none">
+        <div className="p-6 md:p-10 border-b border-slate-50 dark:border-slate-800 space-y-6 md:space-y-8 bg-slate-50/20 dark:bg-slate-950/20">
+          <div className="flex bg-white dark:bg-slate-900 p-2 rounded-[22px] md:rounded-[28px] gap-2 border border-slate-100 dark:border-slate-800 shadow-sm">
             <button 
               onClick={() => setActiveTab('cities')}
               className={cn(
-                "flex-1 py-4 font-black uppercase tracking-widest text-[10px] rounded-[22px] transition-all",
-                activeTab === 'cities' ? "bg-orange-500 text-white shadow-xl shadow-orange-500/20" : "text-slate-400 hover:text-slate-900"
+                "flex-1 py-3 md:py-4 font-black uppercase tracking-widest text-[9px] md:text-[10px] rounded-xl md:rounded-[22px] transition-all",
+                activeTab === 'cities' ? "bg-orange-500 text-white shadow-xl shadow-orange-500/20" : "text-slate-400 dark:text-slate-500 hover:text-slate-900 dark:hover:text-white"
               )}
             >
               Territories
@@ -216,8 +216,8 @@ export default function ItineraryBuilder() {
             <button 
               onClick={() => setActiveTab('activities')}
               className={cn(
-                "flex-1 py-4 font-black uppercase tracking-widest text-[10px] rounded-[22px] transition-all",
-                activeTab === 'activities' ? "bg-orange-500 text-white shadow-xl shadow-orange-500/20" : "text-slate-400 hover:text-slate-900"
+                "flex-1 py-3 md:py-4 font-black uppercase tracking-widest text-[9px] md:text-[10px] rounded-xl md:rounded-[22px] transition-all",
+                activeTab === 'activities' ? "bg-orange-500 text-white shadow-xl shadow-orange-500/20" : "text-slate-400 dark:text-slate-500 hover:text-slate-900 dark:hover:text-white"
               )}
             >
               Curated Events
@@ -225,16 +225,16 @@ export default function ItineraryBuilder() {
           </div>
 
           <div className="relative group">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 group-focus-within:text-orange-500 transition-colors stroke-[2.5]" />
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-300 dark:text-slate-700 group-focus-within:text-orange-500 transition-colors stroke-[2.5]" />
             <input 
               type="text" 
-              placeholder={activeTab === 'cities' ? "Search for Indian territories..." : "Search for experiences..."}
-              className="w-full bg-white border border-slate-100 shadow-sm rounded-[32px] py-6 pl-16 pr-6 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-200"
+              placeholder={activeTab === 'cities' ? "Search for territories..." : "Search for experiences..."}
+              className="w-full bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 shadow-sm rounded-2xl md:rounded-[32px] py-4 md:py-6 pl-14 md:pl-16 pr-6 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 transition-all text-sm font-bold text-slate-900 dark:text-white placeholder:text-slate-200 dark:placeholder:text-slate-800"
             />
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-10 pt-6 space-y-8 scroll-smooth pb-32">
+        <div className="flex-1 overflow-y-auto p-6 md:p-10 pt-6 space-y-8 scroll-smooth pb-48 lg:pb-32">
           <AnimatePresence mode="wait">
             {activeTab === 'cities' ? (
               <motion.div 
@@ -242,21 +242,21 @@ export default function ItineraryBuilder() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
-                className="grid grid-cols-2 gap-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8"
               >
                  {INDIAN_CITIES.map(city => (
                    <div 
                     key={city.name} 
-                    className="group relative h-64 rounded-[48px] overflow-hidden cursor-pointer shadow-2xl shadow-slate-200/50 hover:scale-[1.02] transition-all border border-white"
+                    className="group relative h-48 md:h-64 rounded-[32px] md:rounded-[48px] overflow-hidden cursor-pointer shadow-2xl shadow-slate-200/50 dark:shadow-none hover:scale-[1.02] transition-all border border-white dark:border-slate-800"
                     onClick={() => handleAddStop(city)}
                    >
                      <img src={city.image} alt={city.name} className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110" referrerPolicy="no-referrer" />
                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent group-hover:from-slate-900/60 transition-all" />
-                     <div className="absolute inset-0 p-8 flex flex-col justify-end gap-1">
-                       <h4 className="font-black text-2xl text-white italic serif tracking-tight">{city.name}</h4>
+                     <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end gap-1">
+                       <h4 className="font-black text-xl md:text-2xl text-white italic serif tracking-tight">{city.name}</h4>
                        <p className="text-[10px] uppercase font-black text-white/60 tracking-[0.3em]">{city.state}</p>
-                       <div className="mt-4 overflow-hidden h-0 group-hover:h-12 transition-all duration-500">
-                          <button className="w-full bg-white text-slate-900 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">Integrate Destination</button>
+                       <div className="mt-4 overflow-hidden h-0 group-hover:h-10 md:group-hover:h-12 transition-all duration-500">
+                          <button className="w-full bg-white text-slate-900 py-2 md:py-3 rounded-xl md:rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest shadow-xl">Integrate Destination</button>
                        </div>
                      </div>
                    </div>
@@ -271,41 +271,41 @@ export default function ItineraryBuilder() {
                 className="space-y-6"
               >
                 {stops.length === 0 && (
-                  <div className="p-16 text-center bg-slate-50 rounded-[40px] border-2 border-dashed border-slate-100 space-y-6">
-                    <div className="w-20 h-20 bg-white rounded-[32px] flex items-center justify-center mx-auto shadow-sm">
-                      <Info className="w-10 h-10 text-orange-200 stroke-[1]" />
+                  <div className="p-12 md:p-16 text-center bg-slate-50 dark:bg-slate-950 rounded-[32px] md:rounded-[40px] border-2 border-dashed border-slate-100 dark:border-slate-800 space-y-6">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-white dark:bg-slate-900 rounded-[28px] md:rounded-[32px] flex items-center justify-center mx-auto shadow-sm">
+                      <Info className="w-8 h-8 md:w-10 md:h-10 text-orange-200 dark:text-orange-950 stroke-[1]" />
                     </div>
-                    <p className="text-slate-300 text-[10px] uppercase font-black tracking-[0.2em] italic max-w-xs mx-auto leading-relaxed">Select at least one territorial benchmark to deploy relevant events for that protocol.</p>
+                    <p className="text-slate-300 dark:text-slate-600 text-[10px] uppercase font-black tracking-[0.2em] italic max-w-xs mx-auto leading-relaxed">Select at least one territorial benchmark to deploy relevant events for that protocol.</p>
                   </div>
                 )}
                 
                 {stops.map(stop => (
-                  <div key={stop.id} className="space-y-6 bg-slate-50/50 p-8 rounded-[40px] border border-slate-100 shadow-inner">
-                    <h3 className="text-[10px] uppercase font-black text-orange-500 tracking-[0.3em] flex items-center gap-3 bg-white px-6 py-2.5 rounded-full border border-slate-100 shadow-sm self-start inline-flex">
+                  <div key={stop.id} className="space-y-6 bg-slate-50/50 dark:bg-slate-950/50 p-6 md:p-8 rounded-[32px] md:rounded-[40px] border border-slate-100 dark:border-slate-800 shadow-inner">
+                    <h3 className="text-[9px] md:text-[10px] uppercase font-black text-orange-500 tracking-[0.3em] flex items-center gap-3 bg-white dark:bg-slate-900 px-4 md:px-6 py-2 md:py-2.5 rounded-full border border-slate-100 dark:border-slate-800 shadow-sm self-start inline-flex">
                       <MapPin className="w-4 h-4 stroke-[2.5]" /> Protocols for {stop.city}
                     </h3>
                     <div className="grid grid-cols-1 gap-4">
                       {SUGGESTED_ACTIVITIES.map(activity => (
                         <div 
                           key={activity.name}
-                          className="bg-white border border-slate-100 rounded-[32px] p-6 flex justify-between items-center hover:border-orange-500 hover:scale-[1.02] transition-all cursor-pointer group shadow-sm active:scale-98"
+                          className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[24px] md:rounded-[32px] p-5 md:p-6 flex justify-between items-center hover:border-orange-500 hover:scale-[1.02] transition-all cursor-pointer group shadow-sm active:scale-98"
                           onClick={() => handleAddActivity(stop.id, activity)}
                         >
-                          <div className="flex gap-5">
-                            <div className="w-14 h-14 bg-slate-50 rounded-[20px] flex items-center justify-center font-black text-slate-300 group-hover:bg-orange-50 group-hover:text-orange-500 transition-all border border-slate-100">
+                          <div className="flex gap-4 md:gap-5">
+                            <div className="w-12 h-12 md:w-14 md:h-14 bg-slate-50 dark:bg-slate-800 rounded-2xl md:rounded-[20px] flex items-center justify-center font-black text-slate-300 dark:text-slate-700 group-hover:bg-orange-50 dark:group-hover:bg-orange-900/20 group-hover:text-orange-500 transition-all border border-slate-100 dark:border-slate-700">
                               {activity.category[0]}
                             </div>
                             <div className="space-y-1">
-                              <h4 className="font-black text-lg italic serif text-slate-900 tracking-tight">{activity.name}</h4>
-                              <div className="flex gap-4 text-[10px] text-slate-300 font-black uppercase tracking-widest">
-                                <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 stroke-[2.5]" /> {activity.duration}</span>
-                                <span>{activity.category}</span>
+                              <h4 className="font-black text-base md:text-lg italic serif text-slate-900 dark:text-white tracking-tight">{activity.name}</h4>
+                              <div className="flex gap-3 md:gap-4 text-[9px] md:text-[10px] text-slate-300 dark:text-slate-600 font-black uppercase tracking-widest">
+                                <span className="flex items-center gap-1.5 whitespace-nowrap"><Clock className="w-3.5 h-3.5 stroke-[2.5]" /> {activity.duration}</span>
+                                <span className="hidden sm:inline">{activity.category}</span>
                               </div>
                             </div>
                           </div>
-                          <div className="flex flex-col items-end gap-2">
-                            <span className="font-black text-lg text-slate-900 tracking-tighter">{formatCurrency(activity.cost)}</span>
-                            <div className="p-2 bg-orange-50 rounded-xl group-hover:bg-orange-500 group-hover:text-white transition-all text-orange-500 shadow-sm shadow-orange-500/5">
+                          <div className="flex flex-col items-end gap-2 shrink-0">
+                            <span className="font-black text-base md:text-lg text-slate-900 dark:text-white tracking-tighter">{formatCurrency(activity.cost)}</span>
+                            <div className="p-2 bg-orange-50 dark:bg-orange-900/20 rounded-xl group-hover:bg-orange-500 group-hover:text-white transition-all text-orange-500 shadow-sm shadow-orange-500/5">
                               <Plus className="w-4 h-4 stroke-[3]" />
                             </div>
                           </div>

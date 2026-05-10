@@ -59,49 +59,49 @@ export default function Chatbot() {
             initial={{ opacity: 0, y: 30, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.9 }}
-            className="mb-8 w-[420px] h-[600px] bg-white border border-slate-100 rounded-[48px] overflow-hidden flex flex-col shadow-2xl shadow-slate-300 transition-all text-slate-900"
+            className="mb-8 w-[90vw] md:w-[420px] h-[500px] md:h-[600px] bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[32px] md:rounded-[48px] overflow-hidden flex flex-col shadow-2xl shadow-slate-300 dark:shadow-none transition-all text-slate-900 dark:text-slate-100"
           >
             {/* Header */}
-            <div className="p-8 bg-orange-500 flex justify-between items-center shadow-lg">
+            <div className="p-6 md:p-8 bg-orange-500 flex justify-between items-center shadow-lg">
                <div className="flex items-center gap-4">
-                 <div className="w-12 h-12 bg-white/20 backdrop-blur-xl rounded-[20px] flex items-center justify-center border border-white/20 shadow-sm">
-                   <Sparkles className="text-white w-6 h-6 stroke-[2.5]" />
+                 <div className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-xl rounded-[16px] md:rounded-[20px] flex items-center justify-center border border-white/20 shadow-sm">
+                   <Sparkles className="text-white w-5 h-5 md:w-6 md:h-6 stroke-[2.5]" />
                  </div>
                  <div className="space-y-0.5 text-white">
-                   <h3 className="font-black text-lg tracking-tight italic serif">Traveloop AI</h3>
+                   <h3 className="font-black text-base md:text-lg tracking-tight italic serif">Traveloop AI</h3>
                    <div className="flex items-center gap-2">
-                     <div className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_white]" />
-                     <span className="text-[10px] font-black uppercase tracking-[0.2em] opacity-80">Online Now</span>
+                     <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_white]" />
+                     <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] opacity-80">Online Now</span>
                    </div>
                  </div>
                </div>
                <button 
                 onClick={() => setIsOpen(false)}
-                className="p-3 hover:bg-black/10 rounded-2xl transition-colors text-white"
+                className="p-2 md:p-3 hover:bg-black/10 rounded-xl md:rounded-2xl transition-colors text-white"
                >
-                 <X className="w-6 h-6 stroke-[3]" />
+                 <X className="w-5 h-5 md:w-6 md:h-6 stroke-[3]" />
                </button>
             </div>
 
             {/* Messages */}
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-8 space-y-8 scroll-smooth bg-slate-50/30"
+              className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6 md:space-y-8 scroll-smooth bg-slate-50/30 dark:bg-slate-950/30"
             >
                {messages.map((msg) => (
                  <div key={msg.id} className={cn(
-                    "flex gap-4 max-w-[90%]",
+                    "flex gap-3 md:gap-4 max-w-[95%] md:max-w-[90%]",
                     msg.role === 'user' ? "ml-auto flex-row-reverse" : "mr-auto"
                  )}>
                    <div className={cn(
-                      "w-10 h-10 rounded-[14px] flex items-center justify-center flex-shrink-0 mt-1 shadow-sm border border-slate-100",
-                      msg.role === 'assistant' ? "bg-white text-orange-500" : "bg-orange-500 text-white"
+                      "w-8 h-8 md:w-10 md:h-10 rounded-[12px] md:rounded-[14px] flex items-center justify-center flex-shrink-0 mt-1 shadow-sm border border-slate-100 dark:border-slate-800",
+                      msg.role === 'assistant' ? "bg-white dark:bg-slate-900 text-orange-500" : "bg-orange-500 text-white"
                    )}>
-                     {msg.role === 'assistant' ? <Bot className="w-5 h-5 stroke-[2.5]" /> : <User className="w-5 h-5 stroke-[2.5]" />}
+                     {msg.role === 'assistant' ? <Bot className="w-4 h-4 md:w-5 md:h-5 stroke-[2.5]" /> : <User className="w-4 h-4 md:w-5 md:h-5 stroke-[2.5]" />}
                    </div>
                    <div className={cn(
-                      "p-5 rounded-[28px] text-sm leading-relaxed shadow-xl",
-                      msg.role === 'assistant' ? "bg-white text-slate-600 border border-slate-50 font-medium" : "bg-slate-900 text-white font-black"
+                      "p-4 md:p-5 rounded-[24px] md:rounded-[28px] text-xs md:text-sm leading-relaxed shadow-xl",
+                      msg.role === 'assistant' ? "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-50 dark:border-slate-700 font-medium" : "bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-black"
                    )}>
                      {msg.content}
                    </div>
@@ -110,7 +110,7 @@ export default function Chatbot() {
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-slate-50 bg-white shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.05)]">
+            <div className="p-4 md:p-6 border-t border-slate-50 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.05)]">
                <div className="relative group">
                  <input 
                   type="text" 
@@ -118,13 +118,13 @@ export default function Chatbot() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                  className="w-full bg-slate-50 border border-slate-100 rounded-[28px] py-6 pl-8 pr-16 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 transition-all text-sm font-bold text-slate-900 placeholder:text-slate-200"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[24px] md:rounded-[28px] py-4 md:py-6 pl-6 md:pl-8 pr-14 md:pr-16 outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-500/5 transition-all text-xs md:text-sm font-bold text-slate-900 dark:text-white placeholder:text-slate-200 dark:placeholder:text-slate-800"
                  />
                  <button 
                   onClick={handleSend}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-4 bg-orange-500 text-white rounded-[20px] hover:bg-orange-600 transition-all shadow-lg active:scale-90"
+                  className="absolute right-2 md:right-3 top-1/2 -translate-y-1/2 p-3 md:p-4 bg-orange-500 text-white rounded-[16px] md:rounded-[20px] hover:bg-orange-600 transition-all shadow-lg active:scale-90"
                  >
-                   <Send className="w-5 h-5 stroke-[3]" />
+                   <Send className="w-4 h-4 md:w-5 md:h-5 stroke-[3]" />
                  </button>
                </div>
             </div>

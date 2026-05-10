@@ -36,7 +36,7 @@ export default function ItineraryBuilder() {
 
   if (!trip) return <div>Trip not found</div>;
 
-  const handleAddStop = async (city: typeof INDIAN_CITIES[0]) => {
+  const handleAddStop = (city: typeof INDIAN_CITIES[0]) => {
     const newStop: CityStop = {
       id: Math.random().toString(36).substr(2, 9),
       city: city.name,
@@ -49,16 +49,16 @@ export default function ItineraryBuilder() {
     };
     const newStops = [...stops, newStop];
     setStops(newStops);
-    await updateTrip(trip.id, { stops: newStops });
+    updateTrip(trip.id, { stops: newStops });
   };
 
-  const handleRemoveStop = async (stopId: string) => {
+  const handleRemoveStop = (stopId: string) => {
     const newStops = stops.filter(s => s.id !== stopId);
     setStops(newStops);
-    await updateTrip(trip.id, { stops: newStops });
+    updateTrip(trip.id, { stops: newStops });
   };
 
-  const handleAddActivity = async (stopId: string, activity: (typeof SUGGESTED_ACTIVITIES)[0]) => {
+  const handleAddActivity = (stopId: string, activity: (typeof SUGGESTED_ACTIVITIES)[0]) => {
     const newActivity: Activity = {
       ...activity,
       id: Math.random().toString(36).substr(2, 9),
@@ -68,7 +68,7 @@ export default function ItineraryBuilder() {
       s.id === stopId ? { ...s, activities: [...s.activities, newActivity] } : s
     );
     setStops(newStops);
-    await updateTrip(trip.id, { stops: newStops });
+    updateTrip(trip.id, { stops: newStops });
   };
 
   return (

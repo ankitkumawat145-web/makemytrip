@@ -41,14 +41,14 @@ export default function TripDetail() {
     { name: 'Experiences', value: trip.stops.reduce((acc, s) => acc + s.activities.reduce((a, act) => a + act.cost, 0), 0), color: '#ea580c' },
   ];
 
-  const toggleChecklistItem = async (itemId: string) => {
+  const toggleChecklistItem = (itemId: string) => {
     const newChecklist = trip.checklist.map(item => 
       item.id === itemId ? { ...item, isCompleted: !item.isCompleted } : item
     );
-    await updateTrip(trip.id, { checklist: newChecklist });
+    updateTrip(trip.id, { checklist: newChecklist });
   };
 
-  const addChecklistItem = async (task: string) => {
+  const addChecklistItem = (task: string) => {
     if (!task) return;
     const newItem = {
       id: Math.random().toString(36).substr(2, 9),
@@ -56,7 +56,7 @@ export default function TripDetail() {
       category: 'Essentials' as const,
       isCompleted: false
     };
-    await updateTrip(trip.id, { checklist: [...trip.checklist, newItem] });
+    updateTrip(trip.id, { checklist: [...trip.checklist, newItem] });
   };
 
   return (

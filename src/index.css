@@ -8,11 +8,25 @@
   
   --color-orange-500: #FF9933;
   --color-orange-600: #E68A2E;
+
+  --color-bg-base: #f8fafc;
+  --color-bg-card: #ffffff;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-border-main: #e2e8f0;
+}
+
+.dark {
+  --color-bg-base: #0f172a;
+  --color-bg-card: #1e293b;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-border-main: #334155;
 }
 
 @layer base {
   body {
-    @apply bg-slate-50 text-slate-900 antialiased selection:bg-orange-500 selection:text-white font-sans;
+    @apply bg-[var(--color-bg-base)] text-[var(--color-text-primary)] antialiased selection:bg-orange-500 selection:text-white font-sans transition-colors duration-300;
   }
 }
 
